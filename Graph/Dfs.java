@@ -35,14 +35,14 @@ public class Dfs {
 
         graph[3].add(new Edge(3,1));
         graph[3].add(new Edge(3,4));
-        graph[3].add(new Edge(3,5));
+        // graph[3].add(new Edge(3,5));
 
         graph[4].add(new Edge(4,2));
         graph[4].add(new Edge(4,3));
-        graph[4].add(new Edge(4,5));
+        // graph[4].add(new Edge(4,5));
 
-        graph[5].add(new Edge(5,3));
-        graph[5].add(new Edge(5,4));
+        // graph[5].add(new Edge(5,3));
+        // graph[5].add(new Edge(5,4));
         graph[5].add(new Edge(5,6));
 
         graph[6].add(new Edge(6,5));
@@ -63,6 +63,20 @@ public class Dfs {
         }
 
     }
+    static void breakDfs(ArrayList<Edge> graph[], int curr, boolean[] vis){
+
+        System.out.print(curr+" ");
+
+        vis[curr] = true;
+
+        for(int i=0; i<graph[curr].size(); i++){
+            Edge e = graph[curr].get(i);
+            if(!vis[e.dest]){
+                dfs(graph,e.dest, vis);
+            }
+        }
+
+    }
 
     public static void main(String args[]){
         int V = 7;
@@ -70,6 +84,13 @@ public class Dfs {
 
         createGraph(graph, V);
         boolean vis[] = new boolean[V];
-        dfs(graph,0, vis);
+        // dfs(graph,0, vis);
+
+        for(int i=0; i<V; i++){
+            if(!vis[i]){
+                System.out.print("["+i+"] ");
+                breakDfs(graph, i, vis);
+            }
+        }
     }
 }
