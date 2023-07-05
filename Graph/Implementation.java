@@ -11,6 +11,7 @@ class Implementation{
         }
     }
     /*
+    Unweighted and Undirected Graph
        0----1------2
             \      |
              \     |
@@ -27,6 +28,7 @@ class Implementation{
 
         graph[0].add(new Edge(0,1));
 
+        graph[1].add(new Edge(1,0));
         graph[1].add(new Edge(1,2));
         graph[1].add(new Edge(1,3));
 
