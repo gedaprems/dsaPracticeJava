@@ -45,6 +45,17 @@ public class WeightedGraph {
 
 
     }
+
+    static void printEdgesWeight(ArrayList<Edge> graph[], int V){
+
+        for(int src=0; src<V; src++){
+            // System.out.print(src+" -> ");
+            for(int dest = 0; dest <graph[src].size(); dest++){
+                Edge e = graph[src].get(dest);
+                System.out.println(src +" -> "+e.dest+" "+e.wt);
+            }
+        }
+    }
     public static void main(String args[]){
 
         int V = 4;
