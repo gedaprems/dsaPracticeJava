@@ -60,7 +60,7 @@ public class WeightedGraph {
     public static void main(String args[]){
 
         int V = 4;
-        ArrayList<WeightedGraph.Edge> graph[] = new ArrayList[V];
+        ArrayList<Edge> graph[] = new ArrayList[V];
 
         createGraph(graph, V);
         System.out.println("Printing Edges and Weight: ");
