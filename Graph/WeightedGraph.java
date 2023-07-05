@@ -1,3 +1,4 @@
+package Graph;
 import java.util.ArrayList;
 
 public class WeightedGraph {
@@ -59,7 +60,7 @@ public class WeightedGraph {
     public static void main(String args[]){
 
         int V = 4;
-        ArrayList<Edge> graph[] = new ArrayList[V];
+        ArrayList<WeightedGraph.Edge> graph[] = new ArrayList[V];
 
         createGraph(graph, V);
         System.out.println("Printing Edges and Weight: ");
