@@ -33,14 +33,14 @@ public class Bfs {
 
         graph[3].add(new Edge(3,1));
         graph[3].add(new Edge(3,4));
-        graph[3].add(new Edge(3,5));
+        // graph[3].add(new Edge(3,5));
 
         graph[4].add(new Edge(4,2));
         graph[4].add(new Edge(4,3));
-        graph[4].add(new Edge(4,5));
+        // graph[4].add(new Edge(4,5));
 
-        graph[5].add(new Edge(5,3));
-        graph[5].add(new Edge(5,4));
+        // graph[5].add(new Edge(5,3));
+        // graph[5].add(new Edge(5,4));
         graph[5].add(new Edge(5,6));
 
         graph[6].add(new Edge(6,5));
@@ -71,12 +71,47 @@ public class Bfs {
 
     }
 
+    static void breakBfs(ArrayList<Edge> graph[], int V, int start, boolean[] vis){
+        Queue<Integer> q = new LinkedList();
+
+        q.offer(start);
+
+        while(!q.isEmpty()){
+            int curr = q.poll();
+
+            if(!vis[curr]){
+                System.out.print(curr+" ");
+                vis[curr] = true;
+
+                for(int i=0; i<graph[curr].size(); i++){
+                    Edge e = graph[curr].get(i);
+        
+                    if(!vis[e.dest]){
+                        q.offer(e.dest);
+                    }
+                }
+            }
+        }
+
+    }
+
     public static void main(String args[]){
         int V = 7;
         ArrayList<Edge> graph[] = new ArrayList[V];
 
         createGraph(graph, V);
 
-        bfs(graph, V);
+        // bfs(graph, V);
+
+        //Break Bfs - {Run for all bfs}
+
+        boolean vis[] = new boolean[V];
+
+        for(int i=0; i<V; i++){
+            if(!vis[i]){
+                breakBfs(graph,V,i,vis);
+            }
+        }
+
     }
 }
