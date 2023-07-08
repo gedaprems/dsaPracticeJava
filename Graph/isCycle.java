@@ -60,6 +60,24 @@ public class isCycle {
         return false;
     }
 
+    static boolean isCycleUnDirected(ArrayList<Edge> graph[], int curr, boolean vis[], boolean rec[]){
+        
+        vis[curr] = true;
+        rec[curr] = true;
+
+        for(int i=0; i<graph[curr].size(); i++){
+            Edge e = graph[curr].get(i);
+            if(rec[e.dest]){
+                return true;
+            }
+            if(!vis[e.dest] && isCycleDirected(graph, e.dest, vis, rec)){
+                return true;
+            }
+        }
+        rec[curr] = false;
+        return false;
+    }
+
     public static void main(String args[]){
         int V = 6;
         ArrayList<Edge> graph[] = new ArrayList[V];
