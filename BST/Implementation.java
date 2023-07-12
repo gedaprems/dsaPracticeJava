@@ -33,6 +33,20 @@ public class Implementation {
         inOrder(root.right);
     }
 
+    public static boolean search(Node root, int val){
+        if(root == null){
+            return false;
+        }
+
+        if(root.data < val){
+            return search(root.right, val);
+        }
+        else if(root.data > val){
+            return search(root.left, val);
+        }
+        return true;
+    }
+
     public static void main(String args[]){
         int values[] = {5,1,3,4,2,7};
         Node root = null;
@@ -41,5 +55,12 @@ public class Implementation {
             root = insert(root,values[i]);
         }
         inOrder(root);
+
+        if(search(root,8)){
+            System.out.println("Found");
+        }else{
+            System.out.println("Not Found");
+
+        }
     }
 }
